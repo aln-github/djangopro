@@ -1,0 +1,1209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="cat" style="margin-bottom:30px; position: relative; overflow: hidden;">
+    <img src="{% static 'images/banner6.jpg' %}" height="650px" width="100%" style="display: block;">
+    <div style="position: absolute; top: 50%; left: 10%; transform: translateY(-50%); color: white; text-align: left; max-width: 80%;">
+        <h2 style="color: white; font-size:70px;">MyShop</h2>
+        <p style="color: white;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br> when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+         {% if user.is_authenticated %}
+        {% else %}
+        <a href="{% url 'shop:login' %}" class="btn btn-dark btn-lg btn-block">Buy now</a>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-1" style="margin-bottom:100px">
+    <h3 class="text-center fw-bold" style="font-size:45px;">Our <span class="red-text">Collections...</span></h3>
+    <p class="sectp">Lorem Ipsum is simply dummy text of the printing and typesetting crambled <br><center>it to make a type specimen book.</center>
+     </p>
+</div>
+
+<div class="container" style="margin-bottom:100px">
+    <div class="row">
+        {% for i in c %}
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+            <img src="{{i.image.url}}" width="100%" height="200px" class="card-img-top" alt="...">
+                 <div class="card-body">
+                     <h5 class="card-title ms-2">{{i.name}}</h5>
+                     <p class="card-text" style="text-align:justify;"></p>
+                     <a href="{% url 'shop:allproducts' i.id %}" class="btn btn-dark ms-2">Show more</a>
+                 </div>
+           </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% if user.is_authenticated %}
+<section class="shop-banner" style="background-image:url('{% static "images/pexels-konstantin-mishchenko-1926769.jpg" %}'); height:500px;">
+
+    	<div class="container">
+        	<h3 style="font-size:50px;">December sale is on! <br> with big <span class="red-text">Discount...</span></h3>
+            <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
+            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+        </div>
+    </section>
+        {% else %}
+
+ {% endif %}
+
+
+<div class="centered-container m-5">
+  <div class="row">
+    <div class="col-md-4">
+      <center>
+        <img class="img m-5 mt-5" src="{% static 'images/delivery_sec1.png' %}" height="60px" width="60px">
+        <h4>Fast and Free Delivery</h4>
+      </center>
+    </div>
+
+    <div class="col-md-4">
+      <center>
+        <img class="img m-5 mt-5" src="{% static 'images/delivery_sec3.png' %}" height="60px" width="60px">
+        <h4>Air Delivery</h4>
+        <h6 class="card-subtitle mb-2">20% off</h6>
+      </center>
+    </div>
+
+    <div class="col-md-4">
+      <center>
+        <img class="img m-5 mt-5" src="{% static 'images/delivery_sec2.png' %}" height="60px" width="60px">
+        <h4>24 Hrs Delivery</h4>
+        <h6 class="card-subtitle mb-2">Anytime Anywhere</h6>
+      </center>
+    </div>
+  </div>
+</div>
+
+{% if user.is_authenticated %}
+        {% else %}
+<!--	construuction-features start -->
+	<section class="construuction-features" id="Blog">
+		<div class="container">
+			<h2>Why Choose Us</h2>
+			<div class="row construuction-features-inner">
+				<div class="col-lg-6 thumbnail">
+					<figure>
+						<img src="{% static 'images/website-4.jpg' %}" alt="websites">
+					</figure>
+				</div>
+				<div class="col-lg-6">
+					<h4>Stability</h4>
+					<p>As an online shop website, you probably think a lot about how you can take your home to the next level –– and there are a lot of tools at your disposal.
+
+Yet, as the ecommerce space continues to become more and more competitive, consumers expect a certain level of quality from a retail website they visit. Yes, design matters. Yes, your messaging matters. Yes, whatever campaign you decide to run matters. But, none of those marketing aspects are necessarily non-negotiables.
+
+In the ecommerce world, the following are absolute non-negotiables to running a successful business: site speed, stability and security. </p>
+					<h4>Experienced</h4>
+					<p class="text"> Online shopping is quick and convenient. You can shop a wide selection of shops around the world simultaneously to find the perfect item at the right price. </p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--	construuction-features end-->
+
+<!--	portfolio start -->
+	<section class="portfolio" id="Projects">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="portfolio-header">
+						<h2>Portfolio of Works</h2>
+						<p>Here is some example of our best portfolio works.Its shows our product quality and experiences</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="gal">
+						<div data-tag='Pre_wedding' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-1.jpg' %}" class="img-responsive cursor" alt="portfolio-2">
+							</figure>
+						</div>
+						<div data-tag='Pre_wedding' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="images/portfolio-2.jpg" class="img-responsive cursor" alt="portfolio-4">
+							</figure>
+						</div>
+						<div data-tag='portarits' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-3.jpg' %}" class="img-responsive cursor" alt="portfolio-4">
+							</figure>
+						</div>
+						<div data-tag='Pre_wedding' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-4.jpg' %}" class="img-responsive cursor" alt="portfolio-2">
+							</figure>
+						</div>
+						<div data-tag='fashion' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-5.jpg' %}" class="img-responsive cursor" alt="portfolio-9">
+							</figure>
+						</div>
+						<div data-tag='fashion' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-6.jpg' %}" class="img-responsive cursor" alt="portfolio-1">
+							</figure>
+						</div>
+						<div data-tag='portarits' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-7.jpg' %}" class="img-responsive cursor" alt="portfolio-5">
+							</figure>
+						</div>
+						<div data-tag='portarits' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-8.jpg' %}" class="img-responsive cursor" alt="portfolio-1">
+							</figure>
+						</div>
+						<div data-tag='Pre_wedding' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-9.jpg' %}" class="img-responsive cursor" alt="portfolio-3">
+							</figure>
+						</div>
+						<div data-tag='fashion' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-10.jpg' %}" class="img-responsive cursor" alt="portfolio-6">
+							</figure>
+						</div>
+						<div data-tag='weddings' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-11.jpg' %}" class="img-responsive cursor" alt="portfolio-2">
+							</figure>
+						</div>
+						<div data-tag='landscapes' class="image" onclick="openModal();currentSlide(12)">
+							<figure>
+								<img src="{% static 'images/portfolio-12.jpg' %}" class="img-responsive cursor" alt="portfolio-9">
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Modal pop-up-box Start -->
+			<div id="myModal" class="modal">
+				<span class="close " onclick="closeModal()">&times;</span>
+				<!-- Modal-content Start-->
+				<div class="modal-content">
+					<div class="mySlides">
+						<div class="numbertext">1 / 10</div>
+						<img src="{% static 'images/portfolio-1.jpg' %}" alt="portfolio-1">
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">2 / 10</div>
+						<img src="{% static 'images/portfolio-2.jpg' %}" alt="portfolio-2">
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">3 / 12</div>
+						<img src="{% static 'images/portfolio-3.jpg' %}" alt="portfolio-3">
+					</div>
+
+					<div class="mySlides">
+						<div class="numbertext">4 / 12</div>
+						<img src="{% static 'images/portfolio-4.jpg' %}" alt="portfolio-4">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">5 / 12</div>
+						<img src="{% static 'images/portfolio-5.jpg' %}" alt="portfolio-5">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">6 / 12</div>
+						<img src="{% static 'images/portfolio-6.jpg' %}" alt="portfolio-6">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">7 / 12</div>
+						<img src="{% static 'images/portfolio-7.jpg' %}" alt="portfolio-7">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">8 / 12</div>
+						<img src="{% static 'images/portfolio-8.jpg' %}" alt="portfolio-8">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">9 / 12</div>
+						<img src="{% static 'images/portfolio-9.jpg' %}" alt="portfolio-9">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">10 / 12</div>
+						<img src="{% static 'images/portfolio-10.jpg' %}" alt="portfolio-10">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">11 / 12</div>
+						<img src="{% static 'images/portfolio-11.jpg' %}" alt="portfolio-1">
+					</div>
+					<div class="mySlides">
+						<div class="numbertext">12/ 12</div>
+						<img src="{% static 'images/portfolio-12.jpg' %}" alt="portfolio-12">
+					</div>
+					<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+					<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
+				<!-- Modal-content Ended-->
+			</div>
+			<!-- Modal pop-up-box Ended -->
+			<div class="chevron">
+				<button type="button" class="btn">Get a fee Quote</button>
+				<a href="">view portfolio</a>
+			</div>
+		</div>
+	</section>
+	<!--	portfolio end -->
+
+
+
+
+<!-- Professional-team start -->
+	<section class="professional-team" id="Contact">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-6 professional-team-inner">
+					<div class="row">
+						<div class="col-12">
+							<h3>Professional Team</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipi scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna morbi Lorem ipsum dolor sit amet, consectetur adipiscing eliturna. Lorem . </p>
+						</div>
+					</div>
+					<div id="carousel-example-multi" class="carousel slide carousel-multi-item " data-ride="carousel">
+
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel-example-multi" data-slide-to="1"></li>
+							<li data-target="#carousel-example-multi" data-slide-to="2"></li>
+							<li data-target="#carousel-example-multi" data-slide-to="3"></li>
+							<li data-target="#carousel-example-multi" data-slide-to="4"></li>
+						</ol>
+						<!--/.Indicators-->
+						<div class="carousel-inner " role="listbox">
+							<div class="carousel-item active">
+								<div class="row nogap">
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top1" src="{% static 'images/people-1.png' %}" alt="Card image cap">
+											</figure>
+											  <div class="card-body">
+												<h4 class="card-title ">Harrison Smith</h4>
+												<p class="card-text">Working Advisor</p>
+												<span>
+													<a href="">
+														<i class="fab fa-facebook-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-twitter-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-linkedin"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-instagram"></i>
+													</a>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top2" src="{% static 'images/people-2.png' %}" alt="Card image cap">
+											</figure>
+											<div class="card-body">
+												<h4 class="card-title ">Mark Anthony</h4>
+												<p class="card-text">Media Advisor</p>
+												<span>
+													<a href="">
+														<i class="fab fa-facebook-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-twitter-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-linkedin"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-instagram"></i>
+													</a>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="carousel-item">
+								<div class="row nogap">
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top1" src="{% static 'images/people-1.png' %}" alt="Card image cap">
+											</figure>
+											<div class="card-body">
+												<h4 class="card-title ">Harrison Smith</h4>
+												<p class="card-text">Working Advisor</p>
+												<span>
+													<a href="">
+														<i class="fab fa-facebook-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-twitter-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-linkedin"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-instagram"></i>
+													</a>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top2" src="{% static 'images/people-2.png' %}" alt="Card image cap">
+											</figure>
+											<div class="card-body">
+												<h4 class="card-title ">Inspire Dude</h4>
+												<p class="card-text">Media Advisor</p>
+												<span>
+													<a href="">
+														<i class="fab fa-facebook-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-twitter-square"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-linkedin"></i>
+													</a>
+													<a href="">
+														<i class="fab fa-instagram"></i>
+													</a>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row nogap">
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top1" src="{% static 'images/people-1.png' %}" alt="Card image cap">
+											</figure>
+											<div class="card-body">
+												<h4 class="card-title ">Kannukkutty</h4>
+												<p class="card-text">Working Advisor</p>
+
+											</div>
+										</div>
+									</div>
+									<div class=" col-md-6 col">
+										<div class="card mb-2">
+											<figure>
+												<img class="card-img-top2" src="{% static 'images/people-2.png' %}" alt="Card image cap">
+											</figure>
+											<div class="card-body">
+												<h4 class="card-title ">Mark Anthony</h4>
+												<p class="card-text">Media Advisor</p>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Controls-->
+					<div class="controls-bottom">
+						<a class="btn-floating" href="#carousel-example-multi" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+						<a class="btn-floating" href="#carousel-example-multi" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+					</div>
+					<!--/.Controls-->
+				</div>
+
+				<div class="col-lg-6 contact-us">
+					<h3>Contact With Us</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipi scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna morbi Lorem ipsum dolor sit amet, consectetur adipiscing eliturna. Lorem . </p>
+					<form>
+						<div class="form-group row">
+							<div class="col-sm-6 col-12">
+								<input type="text" class="form-control" placeholder="Name" required>
+							</div>
+							<div class="col-sm-6 col-12">
+								<input type="text" class="form-control" placeholder="Email" required style="float: right;">
+							</div>
+
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-12">
+								<textarea type="text" class="form-control" placeholder="Message" rows="6" required></textarea>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Contact Us</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- professional-team end -->
+{% endif %}
+
+<style>
+
+    .card-body {
+
+    background-color: #850d0d;
+    color:white;
+}
+
+.card:hover{
+transform: scale(1.05);
+box-shadow: 0 0 10px red;
+
+}
+
+
+button {
+  position: relative;
+  margin: 0;
+  padding: 0.8em 1em;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-size: 18px;
+  font-family: inherit;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  margin-top:5px;
+}
+
+button:hover {
+  animation: sh0 0.5s ease-in-out both;
+}
+
+@keyframes sh0 {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: rotate(7deg) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: rotate(-7deg) translate3d(0, 0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+button:hover span {
+  animation: storm 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+button::before,
+button::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+  z-index: -1;
+  transform: translate(100%, -25%) translate3d(0, 0, 0);
+}
+
+button:hover::before,
+button:hover::after {
+  opacity: 0.15;
+  transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+button:hover::before {
+  transform: translate3d(50%, 0, 0) scale(0.9);
+}
+
+button:hover::after {
+  transform: translate(50%, 0) scale(1.1);
+}
+
+
+.shop-banner {
+    position: relative;
+    background-color: #f5f5f5;
+    background-size: cover;
+    padding: 110px 0px 115px;
+}
+
+a.cart-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    transition: 0.3s;
+    border-radius: 50px;
+
+}
+
+.shop-banner .sale-percent {
+    position: relative;
+    font-size: 60px;
+    font-weight: 700;
+    color: red;
+}
+
+.shop-banner .sale-percent span {
+    position: relative;
+    font-size: 24px;
+    line-height: 1.1em;
+    color: #051922;
+    font-weight: 400;
+    text-align: center;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.red-text{
+color:red;
+}
+
+.sectp{
+text-align:justify;
+font-size: 15px;
+width: 530px;
+margin: 0 auto;
+color: #555;
+margin-top: 10px;
+line-height: 1.8;
+
+}
+
+
+/*-- professional-team start --*/
+
+.professional-team {
+	margin-top: 90px;
+	margin-bottom: 118px;
+}
+
+.professional-team .professional-team-inner h3 {
+	font-size: 50px;
+	letter-spacing: 0.2px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 19px;
+}
+
+.professional-team .professional-team-inner p {
+	font-size: 18px;
+	line-height: 32px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 36px;
+	opacity: 0.8;
+	width: 84%;
+}
+
+.professional-team .professional-team-inner .card-img-top1 {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-top-right-radius: 20px;
+}
+
+.professional-team .professional-team-inner .card-img-top2 {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-bottom-left-radius: 20px;
+}
+
+.professional-team .carousel-indicators {
+	display: none;
+}
+
+.professional-team .card {
+	border: 0;
+	border-radius: 0;
+}
+
+.professional-team .controls-bottom a {
+	background: #bbbbbb;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 3px 36px;
+	text-align: center;
+	margin-right: 20px;
+	transition: 0.6s;
+}
+
+.professional-team .controls-bottom a:hover {
+	background-color: #636363;
+}
+
+.professional-team .controls-bottom i {
+	font-size: 18px;
+	color: #ffffff;
+}
+
+.professional-team .fa-facebook-square {
+	color: #0054a6;
+}
+
+.professional-team .fa-twitter-square {
+	color: #00aeef;
+}
+
+.professional-team .fa-linkedin {
+	color: #005b7f;
+}
+
+.professional-team .fa-instagram {
+	color: #ef4b78;
+}
+
+.professional-team .card-body .card-title {
+	font-size: 24px;
+	color: #000000;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.professional-team .card-body .card-text {
+	font-size: 16px;
+	line-height: 22px;
+	color: #636363;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.Professional-team .card-body {
+	padding: 38px 0 47px 0;
+}
+
+.professional-team span i {
+	font-size: 20px;
+	margin-right: 20px;
+}
+
+.nogap > .col {
+	padding-left: 50.5px;
+	padding-right: 50.5px
+}
+
+.nogap > .col:first-child {
+	padding-left: 15px;
+}
+
+.nogap > .col:last-child {
+	padding-right: 15px;
+}
+
+.card-body {
+	padding-left: 0;
+}
+
+.contact-us {
+	padding-left: 120px;
+}
+
+.contact-us h3 {
+	font-size: 50px;
+	letter-spacing: 0.2px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 19px;
+}
+
+.contact-us p {
+	font-size: 18px;
+	line-height: 32px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 36px;
+	opacity: 0.8;
+}
+
+.contact-us .form-control {
+	border: 5px solid #e1e1e1;
+	border-radius: 0;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.form-control:focus {
+	/* 	border-color: #fdb714;*/
+	outline: 0;
+	box-shadow: unset;
+}
+
+.contact-us .form-group:first-child .form-control {
+	padding: 32px 19px;
+	width: 263px;
+}
+
+.contact-us .form-group:nth-child(2) .form-control {
+	height: 162px;
+	margin-top: 18px;
+	margin-bottom: 7px;
+}
+
+.contact-us form .btn {
+	font-size: 18px;
+	color: #ffffff;
+	padding: 15px 51px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 0;
+	border-radius: 5px;
+	background-color: #363636;
+	border: 2px solid transparent;
+	transition: 0.5s;
+}
+
+.contact-us form .btn:hover {
+	color: #363636;
+	border: 2px solid #363636;
+	background-color: #ffffff;
+}
+
+/*-- professional-team end --*/
+
+
+/*-- construuction-features start --*/
+
+.construuction-features {
+	margin-bottom: 134px;
+}
+
+.construuction-features .thumbnail {
+	background-image: url(../images/website-3.jpg);
+	background-repeat: no-repeat;
+	position: relative;
+	width: 360px;
+	height: 360px;
+	border-radius: 20px;
+	border-top-left-radius: 0;
+}
+
+.construuction-features figure img {
+	width: 360px;
+	height: 360px;
+	object-fit: cover;
+	position: absolute;
+	top: 105px;
+	right: 100px;
+	left: 5px;
+	border-radius: 20px;
+	border-bottom-right-radius: 0;
+}
+
+.construuction-features h2 {
+	font-size: 50px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 53px;
+}
+
+.construuction-features h4 {
+	font-size: 26px;
+	color: #000000;
+	font-weight: bold;
+	margin-bottom: 22px;
+}
+
+.construuction-features p {
+	font-size: 18px;
+	line-height: 32px;
+	color: #000000;
+	opacity: 0.8;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 42px;
+}
+
+.construuction-features .text {
+	margin-bottom: 0;
+}
+
+/*-- construuction-features end --*/
+
+
+/*-- portfolio start --*/
+
+.portfolio {
+	padding-bottom: 133px;
+}
+
+.portfolio .portfolio-header {
+	width: 790px;
+	margin-bottom: 30px;
+}
+
+.portfolio .portfolio-header h2 {
+	font-size: 50px;
+	font-weight: bold;
+	color: #000000;
+	letter-spacing: 0.2px;
+	margin-bottom: 30px;
+}
+
+.portfolio .portfolio-header p {
+	font-size: 18px;
+	line-height: 32px;
+	color: #000000;
+	opacity: 0.8;
+
+}
+
+.portfolio .category {
+	text-align: center;
+	padding-bottom: 47px;
+}
+
+.portfolio .category .btn {
+	border-radius: 0;
+}
+
+.portfolio .gal {
+	-webkit-column-count: 4;
+	/* Chrome, Safari, Opera */
+	-moz-column-count: 4;
+	/* Firefox */
+	column-count: 4;
+	padding-bottom: 44px;
+	padding-right: 0;
+	-webkit-column-gap: 3.3em;
+	-moz-column-gap: 3em;
+	/*
+ 	column-gap: 0em;
+ 	margin: 0 -26px;
+*/
+}
+
+.portfolio .gal .image {
+	padding: 0 0 27px;
+}
+
+.img-adj {
+	margin: 0 -26px;
+}
+
+.portfolio figure {
+	display: inline-block;
+	position: relative;
+}
+
+.portfolio figure::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	box-shadow: inset 0 0 0 0 #fdb714;
+	transition: box-shadow .1s ease;
+}
+
+.portfolio figure:hover::after {
+	box-shadow: inset 0 0 0 5px red;
+	cursor: zoom-in;
+	background-color: #00000035;
+}
+
+.portfolio figure {
+	cursor: pointer;
+	transition: 0.3s;
+	width: 100%;
+}
+
+.portfolio .box {
+	padding-right: 0;
+}
+
+.Portfolio .chevron {
+	margin: 0 auto;
+}
+
+.Portfolio .gal img-responsive {
+	width: 100%;
+	margin: 0;
+}
+
+.portfolio .col-md-12 {
+	padding: 0;
+}
+
+@media (max-width: 500px) {
+	.Portfolio .gal {
+		-webkit-column-count: 2;
+		/* Chrome, Safari, Opera */
+		-moz-column-count: 2;
+		/* Firefox */
+		column-count: 2;
+	}
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.column {
+	float: left;
+	width: 25%;
+}
+
+/* The Modal (background) */
+
+.modal {
+	display: none;
+	position: fixed;
+	padding-top: 80px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.84);
+	padding-bottom: 60px;
+}
+
+/* Modal Content */
+
+.modal-content {
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.52);
+	margin: auto;
+	padding: 0;
+	width: 90%;
+	max-height: 500px;
+	max-width: 493px;
+	max-width: 500px;
+}
+
+/* The Close Button */
+
+.close {
+	color: white;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	opacity: .5;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #999;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.mySlides {
+	display: none;
+	background: transparent;
+	width: 600px;
+	height: auto;
+}
+
+.cursor {
+	/* 	cursor: pointer;*/
+	width: 100%;
+	height: 100%;
+
+}
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+	position: absolute;
+	top: 55%;
+	cursor: pointer;
+	width: auto;
+	padding: 16px;
+	margin-top: -50px;
+	color: #ffffff !important;
+	font-weight: bold;
+	font-size: 30px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.numbertext img {
+	width: 500px;
+	height: 500px;
+}
+
+/* Position the "next button" to the right */
+
+.next {
+	right: -20.5%;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+	background-color: rgba(255, 255, 0, 0.4);
+}
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+	color: #ffffff;
+	font-size: 16px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+.caption-container {
+	text-align: center;
+	background-color: black;
+	padding: 2px 16px;
+	color: white;
+}
+
+.demo {
+	opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+	opacity: 1;
+}
+
+/*==*/
+
+.portfolio .image {
+	display: block;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.portfolio .overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .3s ease;
+}
+
+.portfolio .fa-search-plus {
+	color: white;
+	font-size: 31px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	top: calc(55% - 30px);
+	left: calc(55% - 30px);
+	text-align: center;
+}
+
+.portfolio .fa-search-plus:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.portfolio .modal .modal-content .mySlides img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.portfolio .chevron {
+	text-align: center;
+}
+
+.portfolio .chevron .btn {
+	font-size: 28px;
+	background-color: red;
+	display: inline-block;
+	color: black;
+	border-radius: 60px;
+	padding: 13px 51px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-right: 22px;
+	transition: 0.6s;
+	border: 2px solid transparent;
+}
+
+.portfolio .chevron .btn:hover {
+	background-color: black;
+	border: 2px solid red;
+	color: white;
+}
+
+.portfolio .chevron a {
+	font-size: 18px;
+	color: red;
+	font-weight: bold;
+	letter-spacing: 0.2px;
+	text-transform: uppercase;
+	border-bottom: 2px solid black;
+	transition: 0.6s;
+}
+
+.portfolio .chevron a:hover {
+	color: black;
+	border-bottom-color: red;
+}
+
+/*-- portfolio end --*/
+
+</style>
+
+
+
+
+
+{% endblock %}

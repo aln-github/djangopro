@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="pro" style="margin-bottom:30px;">
+    <img src="{{c.image.url}}" height="650px" width="100%">
+</div>
+
+<div class="container-fluid mt-1" style="margin-bottom:100px">
+    <h3 class="text-center fw-bold">{{c.name}}</h3>
+    <p style="text-align:justify;line-height:2">{{c.desc}}</p>
+</div>
+
+<div class="container" style="margin-bottom:100px">
+    <div class="row">
+        {% for i in p %}
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+            <img src="{{ i.image.url }}" width="100%" height="200px" class="card-img-top" alt="...">
+                 <div class="card-body">
+                     <h5 class="card-title">{{i.name}}</h5>
+                     <p class="card-text" style="text-align:justify;"></p>
+                     <a href="{% url 'shop:prodetail' i.id %}" class="btn btn-danger">Show more</a>
+                 </div>
+           </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+
+    .card:hover{
+transform: scale(1.05);
+box-shadow: 0 0 10px red;
+
+}
+</style>
+
+{% endblock %}
